@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- <link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
+<link type="text/css" rel="stylesheet" id="dark-mode-general-link">
+<style lang="en" type="text/css" id="dark-mode-custom-style"></style>
+<style lang="en" type="text/css" id="dark-mode-native-style"></style>
+<style lang="en" type="text/css" id="dark-mode-native-sheet"></style> -->
+
+
+    <head>
+        <!-- Meta Data -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Memzo - Share Event Photos using Face Recognition </title>
+        <!-- <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+        <meta name="Author" content="Spruko Technologies Private Limited">
+        <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit."> -->
+    
+        <!-- Favicon -->
+        <link rel="icon" href="https://memzo.ai/adminapp/assets/media/logos/favicon.png" type="image/x-icon">
+    
+        <!-- Main Theme Js -->
+        <script async="" src="https://www.clarity.ms/s/0.7.24/clarity.js"></script><script async="" src="https://www.clarity.ms/tag/kgy9ps0jhi"></script><script src="https://live.memzo.ai/adminapp/assets/js/authentication-main.js"></script>
+    
+        <!-- Bootstrap Css -->
+        <link id="style" href="https://live.memzo.ai/adminapp/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+        <!-- Style Css -->
+        <link href="https://live.memzo.ai/adminapp/assets/css/styles.min.css" rel="stylesheet">
+    
+        <!-- Icons Css -->
+        <link href="https://live.memzo.ai/adminapp/assets/css/icons.min.css" rel="stylesheet">
+        <link href="https://live.memzo.ai/adminapp/assets/css/custom.css" rel="stylesheet">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style type="text/css">
+        @media (min-width: 1400px)
+        {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        width: 95% !important;
+        max-width: 1200px !important;
+    }
+        }
+    </style>
+    <style>
+        .required {
+         border: 1px solid red !important;
+        }
+      </style>
+
+    </head>
+
+
+<body style="padding: 50px 10px;
+    background: linear-gradient(-45deg, #F5ABCA, #FF7783, #FFBB8A, #F5ABCA);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;">
+    <section class="signin_section" style="background: none !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 text-center left_content position-relative">
+                    <img src="https://live.memzo.ai/adminapp/assets/images/memzo/memzo_logo.png" class="img_logo">
+                    <div class="for_mobile_view">
+                        <div class="my-4">
+                            <img src="https://live.memzo.ai/adminapp/assets/images/memzo/Frame.svg" class="signin_left_logo w-100">
+                        </div>
+                        <h1>
+                            Share event photos using Face Recognition
+                        </h1>
+                        <p>
+                            Each guest clicks a selfie and finds their photos instantly. Create your event for free. 
+                            Pay only once you like it.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 right_content text-center">
+                    <div id="signIn">
+                        <h3>Sign in</h3>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#" type="button" class="btn w-100 google_facebook_btn">
+                                    <img src="https://live.memzo.ai/adminapp/assets/images/memzo/flat-color-icons_google.svg" class="mr-1 align-middle">
+                                   Google
+                                </a>
+                            </div>
+                        </div>
+                        <h6><span>OR</span></h6>
+                        <div class="signin_tab">
+                            
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <form>
+                                        <div class="row mb-3">
+                                            <label for="log_email" class="col-sm-12 col-form-label">Email</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" class="form-control" id="log_email" placeholder="Enter email address">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="log_password" class="col-sm-12 col-form-label">Password</label>
+                                            <div class="col-sm-12">
+                                                <input type="password" class="form-control" id="log_password" placeholder="****">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3 align-items-center">
+                                            <div class="col-7 text-start">
+                                                <a onclick="//show_hide('#forgotpwd','#signIn')//">Forgot password?</a>
+                                            </div>
+                                            <div class="col-5 text-end">
+                                                <button type="button" id="btn_login" style="width: auto;" onclick="//gologin()//" class="btn signin_btn">
+                                                    Sign in
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr style="margin: 20px 0;">
+                            <p>
+                                Not registered?
+                                <a onclick="show_hide('#signUp','#signIn')" class="cursor-pointer">
+                                    Sign up
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0575 4.74219L13.1737 5.62605L16.9236 9.37594H0.625V10.626H16.9234L13.1737 14.3757L14.0575 15.2596L19.3163 10.0009L14.0575 4.74219Z" fill="#008D9A"></path>
+                                    </svg>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="signUp" style="display: none;">
+                        <h3>Sign Up</h3>
+                        <div class="row">
+                            <div class="col-12">
+                                  <a href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&amp;access_type=online&amp;client_id=1058918173630-o187phebk5k54iu502no610v90fug1ej.apps.googleusercontent.com&amp;redirect_uri=https%3A%2F%2Flive.memzo.ai%2Fauth%2Fgoogle%2Fcallback&amp;state&amp;scope=email%20profile&amp;approval_prompt=auto" type="button" class="btn w-100 google_facebook_btn">
+                                    <img src="https://live.memzo.ai/adminapp/assets/images/memzo/flat-color-icons_google.svg" class="mr-1 align-middle">
+                                   Google
+                                </a>
+                            </div>
+                            
+                        </div>
+                        <h6><span>OR</span></h6>
+                        <h3 class="m-0">Create new account</h3>
+                        <div class="signin_tab">
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-sm-6">
+                                        <label for="fname" class="col-sm-12 col-form-label">First name</label>
+                                        <input type="text" class="form-control" id="signup_fname" placeholder="Enter First Name">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="lname" class="col-sm-12 col-form-label">Last name</label>
+                                        <input type="text" class="form-control" id="signup_lname" placeholder="Enter Last Name">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="mobile" class="col-sm-12 col-form-label">Mobile number</label>
+                                    
+                                    <div class="col-8">
+                                        <input type="tel" class="form-control" id="signup_contact" placeholder="Enter Mobile Number">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputEmail3" class="col-sm-12 col-form-label">Email</label>
+                                    <div class="col-sm-12">
+                                        <input type="email" class="form-control" id="signup_email" placeholder="Enter Your E-Mail">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputPassword3" class="col-sm-12 col-form-label">Password</label>
+                                    <div class="col-sm-12">
+                                        <input type="password" class="form-control" id="signup_password" placeholder="Enter Password">
+                                    </div>
+                                </div>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-sm-12 text-end">
+                                        <button type="button" id="signup_btn_submit" onclick="//signup_send_otp()//" class="btn signin_btn w-100">
+                                            Create Account
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr style="margin: 20px 0;">
+                            <p>
+                                Already registered?
+                                <a onclick="show_hide('#signIn','#signUp')" class="cursor-pointer">
+                                    Sign In
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0575 4.74219L13.1737 5.62605L16.9236 9.37594H0.625V10.626H16.9234L13.1737 14.3757L14.0575 15.2596L19.3163 10.0009L14.0575 4.74219Z" fill="#008D9A"></path>
+                                    </svg>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Custom-Switcher JS -->
+    <script src="https://live.memzo.ai/adminapp/assets/js/custom-switcher.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://live.memzo.ai/adminapp/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Show Password JS -->
+    <script src="https://live.memzo.ai/adminapp/assets/js/show-password.js"></script>
+
+    <script>
+
+        $('.numberEdit_div').hide();
+       $('.forgotpwd').hide();
+       $('.forgotpwdReset').hide();
+        
+        function showSignUp_div() {
+           
+            $('#signUp').show();
+            $('#signIn').hide();
+            $('#forgotpwd').hide();
+            $('#forgotpwdReset').hide();
+            $('#signupVerify').hide();
+           
+        }
+        function showSignIn_div() {
+            $('#signUp').hide();
+            $('#signIn').show();
+            $('#forgotpwd').hide();
+            $('#forgotpwdReset').hide();
+            $('#signupVerify').hide();
+           
+        }
+
+        function show_hide(elm1, elm2)
+        {
+            $(elm1).show();
+            $(elm2).hide();
+        }
+          
+    </script>
+
+
+</body>
+    
+
+</body>
+</html>
