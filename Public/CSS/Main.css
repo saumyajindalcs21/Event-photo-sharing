@@ -3,9 +3,37 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* room card design  */
+
 .card{
     border: none !important;
+    height: 450px !important;
+    overflow: visible;
 }
 .card-img-top{
-    border-radius: 2rem !important;
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 20rem !important;
+}
+.card-body{
+    padding: 0 !important;
+    overflow: hidden;
+}
+.card-body h5{
+    font-weight: 500 !important;
+}
+
+.MainImage{
+    width: 100% !important;
+    height: 1000px !important;
+    border: 5px solid black;
+}
+
+.MainImage img{
+    
+    object-fit: contain !important;
+    border-radius: 5rem !important;
+    
 }
