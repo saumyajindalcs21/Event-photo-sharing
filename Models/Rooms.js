@@ -21,7 +21,11 @@ const RoomSchema=new mongoose.Schema({
     Images:[{
         type: mongoose.Schema.Types.ObjectId,
         ref:'Images'
-    }]
+    }],
+    owner:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    }
 });
 
 RoomSchema.post('findOneAndDelete',async(Room)=>{

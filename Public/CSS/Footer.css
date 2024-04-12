@@ -1,0 +1,78 @@
+/**footer**/
+
+.footer-outer{
+    padding: 4vw;
+}
+.footer-inner{
+    display: flex;
+}
+.footer-left h3{
+    font-size: 1vw;
+    margin-top: 0.5vw;
+    margin-bottom: 1vw;
+}
+.footer-left img{
+    height: 3vw;
+    width: 3vw;
+    animation: rotate 1s linear infinte  ;
+}
+.footer-logo{
+    display: flex;
+    margin-left: 1vw;
+    >h2{
+        font-size: 2.5vw;
+        margin-left: 0.5vw;
+    } 
+}
+.footer-logo img{
+    animation: rotation 6s infinite linear;
+  }
+  
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+.footer-icons{
+    margin-left: 1.5vw;
+    display: flex;
+}
+.footer-icons a{
+    margin-right: 2vw;
+    height: 2vw;
+    width: 2vw;
+}
+
+.footer-right{
+    display: flex;
+    margin-left: 8vw;
+}
+
+.footer-right a{
+    text-decoration: none;
+    font-size: 1vw;
+    color: rgb(89, 86, 86);
+    display: block;
+    margin-bottom: 1vw;
+}
+.footer-right h3{
+    font-size: 2vw;
+    margin-bottom: 2vw;
+    
+}
+.opt-Margin{
+    margin-left: 8vw;
+}
+hr{
+    width: 90vw;
+    margin: auto !important;
+}
+
+.copyright h4{
+    font-size: 1vw;
+    margin: 1vw 5vw;
+    text-align: center;
+}

@@ -10,7 +10,8 @@
         <!-- <link rel="icon" href="https://memzo.ai/adminapp/assets/media/logos/favicon.png" type="image/x-icon"> -->
     
         <!-- Main Theme Js -->
-        <script async="" src="https://www.clarity.ms/s/0.7.24/clarity.js"></script><script async="" src="https://www.clarity.ms/tag/kgy9ps0jhi"></script><script src="https://live.memzo.ai/adminapp/assets/js/authentication-main.js"></script>
+        <script async="" src="https://www.clarity.ms/s/0.7.24/clarity.js"></script><script async="" src="https://www.clarity.ms/tag/kgy9ps0jhi"></script>
+        <script src="https://live.memzo.ai/adminapp/assets/js/authentication-main.js"></script>
     
         <!-- Bootstrap Css -->
         <link id="style" href="https://live.memzo.ai/adminapp/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -44,10 +45,26 @@
     </head>
 
 
-<body style="padding: 50px 10px;
+<body style="padding: 5px 10px;
     background: linear-gradient(-45deg, #F5ABCA, #FF7783, #FFBB8A, #F5ABCA);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;">
+    
+    <% if(success && success.length){ %>
+        <div class="alert alert-dark alert-dismissible fade show col-6 offset-3" role="alert">
+            <span class="text-green-500"><%= success %></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="rotate: 45deg;"><i class="bi bi-plus"></i></button>
+        </div>
+    <%}%>
+
+    <% if(error && error.length){ %>
+        <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+            <%= error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <%}%>
+    
+
     <section class="signin_section" style="background: none !important;">
         <div class="container">
             <div class="row">
@@ -83,17 +100,19 @@
                             
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <form>
+
+                                    <form method="POST" action="/login" class="needs-validation" novalidate>
+
                                         <div class="row mb-3">
-                                            <label for="log_email" class="col-sm-12 col-form-label">Email</label>
+                                            <label for="log_email" class="col-sm-12 col-form-label">Username</label>
                                             <div class="col-sm-12">
-                                                <input type="email" class="form-control" id="log_email" placeholder="Enter email address">
+                                                <input type="text" class="form-control" id="log_username" name="username" placeholder="Enter email address" required>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="log_password" class="col-sm-12 col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" id="log_password" placeholder="****">
+                                                <input type="password" class="form-control" id="log_password" name="password" placeholder="****" required>
                                             </div>
                                         </div>
                                         <div class="row mb-3 align-items-center">
@@ -101,12 +120,14 @@
                                                 <a onclick="//show_hide('#forgotpwd','#signIn')//">Forgot password?</a>
                                             </div>
                                             <div class="col-5 text-end">
-                                                <button type="button" id="btn_login" style="width: auto;" onclick="//gologin()//" class="btn signin_btn">
+                                                <button id="btn_login" style="width: auto;" onclick="//gologin()//" class="btn signin_btn">
                                                     Sign in
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
+
+
                                 </div>
                             </div>
                             <hr style="margin: 20px 0;">
@@ -135,44 +156,52 @@
                         <h6><span>OR</span></h6>
                         <h3 class="m-0">Create new account</h3>
                         <div class="signin_tab">
-                            <form>
+
+                            <form action="/SignUp" method="POST" class="needs-validation" novalidate>
                                 <div class="row mb-3">
                                     <div class="col-sm-6">
                                         <label for="fname" class="col-sm-12 col-form-label">First name</label>
-                                        <input type="text" class="form-control" id="signup_fname" placeholder="Enter First Name">
+                                        <input type="text" class="form-control" id="signup_fname" name="FirstName" placeholder="Enter First Name" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="lname" class="col-sm-12 col-form-label">Last name</label>
-                                        <input type="text" class="form-control" id="signup_lname" placeholder="Enter Last Name">
+                                        <input type="text" class="form-control" id="signup_lname" name="LastName" placeholder="Enter Last Name" required>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
+                                <!-- <div class="row mb-3">
                                     <label for="mobile" class="col-sm-12 col-form-label">Mobile number</label>
-                                    
                                     <div class="col-8">
-                                        <input type="tel" class="form-control" id="signup_contact" placeholder="Enter Mobile Number">
+                                        <input type="tel" class="form-control" id="signup_contact" name="signup_contact" placeholder="Enter Mobile Number" required>
+                                    </div>
+                                </div> -->
+                                <div class="row mb-3">
+                                    <label for="Username" class="col-sm-12 col-form-label">Username</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="signup_Username" name="username" placeholder="Enter Your Username" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-12 col-form-label">Email</label>
                                     <div class="col-sm-12">
-                                        <input type="email" class="form-control" id="signup_email" placeholder="Enter Your E-Mail">
+                                        <input type="email" class="form-control" id="signup_email" name="Email" placeholder="Enter Your E-Mail" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPassword3" class="col-sm-12 col-form-label">Password</label>
                                     <div class="col-sm-12">
-                                        <input type="password" class="form-control" id="signup_password" placeholder="Enter Password">
+                                        <input type="password" class="form-control" id="signup_password" name="password" placeholder="Enter Password" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3 align-items-center">
                                     <div class="col-sm-12 text-end">
-                                        <button type="button" id="signup_btn_submit" onclick="//signup_send_otp()//" class="btn signin_btn w-100">
+                                        <button  id="signup_btn_submit" onclick="//signup_send_otp()//" class="btn signin_btn w-100">
                                             Create Account
                                         </button>
                                     </div>
                                 </div>
                             </form>
+
+
                             <hr style="margin: 20px 0;">
                             <p>
                                 Already registered?
@@ -199,6 +228,9 @@
 
     <!-- Show Password JS -->
     <script src="https://live.memzo.ai/adminapp/assets/js/show-password.js"></script>
+
+    <!-- Form Validation -->
+    <script src="/JS/FormValidation.js"></script>
 
     <script>
 

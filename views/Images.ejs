@@ -2,17 +2,22 @@
 
 <body>
 
-  <div class="main col-10 mx-auto">
+  <div class="main col-10 mx-auto mb-5">
 
     <div class="MainImage">
       <img class="w-100" src=" <%= roomInfo.MainImage %> " alt="MainImage" style="height: 35rem; border-radius: 1rem; object-fit: fill;">
     </div>
 
     <div>
+      <div class="EventOwnerName me-3 d-flex justify-end">
+        <p>Event Created By <i><%= roomInfo.owner.username %></i></p>
+      </div>
       <div class="EventInfo" style="overflow-wrap: break-word;" >
         <h1 class="fs-2 mb-3 mt-2"><%= roomInfo.RoomName %></h1>
         <h3 class="fs-6"> <%= roomInfo.desc %> </h3>
       </div>
+
+    <% if(currUser && currUser._id.equals(roomInfo.owner._id)){ %>
       <div class="EditandDelete d-flex">
         <a href="/Rooms/<%= roomInfo._id %>/Edit ">
             <button class="btn btn-dark mx-3 my-4" type="submit" >Edit Your Event Details</button>
@@ -22,11 +27,14 @@
             <button class="btn btn-danger mx-3 my-4">Delete</button>
         </form>
       </div>
+      <hr class="col-12">
+    <%}%>
+
     </div>
 
 
-    <hr>
-
+    
+  <% if(currUser && currUser._id.equals(roomInfo.owner._id)){ %>
     <h1 class="mb-3 fs-1 my-4">Add Images</h1>
 
     <form action="/Rooms/<%= roomInfo._id %>/AddImages" method="POST" enctype="multipart/form-data" novalidate class="needs-validation">
@@ -40,25 +48,32 @@
         </div>
 
     </form>
+  <%}%>
+
+<hr class="mt-5 col-12">
 
     <div class="Images">
         <h1 class="fs-3 mt-5">All Images</h1>
-
         <div class="showImage mt-6 row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
 
         <% for(let image of roomInfo.Images){%>
 
             <div class="card col mx-2 mt-3" style="width: 18rem;">
-                <img src="/uploads/<%= image.FileName %>" class="card-img-top mt-2" alt="...">
+                <img src="/uploads/<%= image.FileName %>" class="card-img-top mt-2" alt="..." style="height: 15rem !important;">
                 <div class="card-body">
-                  <h5 class="card-title mb-3"><%= image.FileName %></h5>
+                  <div style="overflow: hidden; height: 2.5rem !important;">
+                    <h5 class="card-title mb-3"><%= image.FileName %></h5>
+                  </div>
                   <div class="d-flex mt-4">
                 <a href="/Rooms/<%= roomInfo._id %>/showImage/<%= image._id %>">
                   <button class="btn btn-dark me-4">showImage</button>
                 </a>
+
+                <% if(currUser && currUser._id.equals(roomInfo.owner._id)){ %>
                   <form method="POST" class="mb-1 ms-4" action="/Rooms/<%= roomInfo._id %>/AddImages/<%= image._id %>">
                     <button class="btn btn-danger">Delete</button>
                   </form>
+                <%}%>
                 </div>
                 </div>
               </div>
