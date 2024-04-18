@@ -18,15 +18,26 @@ const UserSchema=new mongoose.Schema({
         trim:true
     },
     ProfilePic:{
+        FileName:{
+            type:String,
+            required:true,
+            default: "Default_Profile_Pic.jpg" ,
+            set:(v)=> v===""?"Default_Profile_Pic.jpg" :v,
+
+        },
+        FilePath:{
+            type:String,
+            required:true,
+            default: "uploads\ProfilePictures\Default_Profile_Pic.jpg" ,
+            set:(v)=> v===""?"uploads\ProfilePictures\Default_Profile_Pic.jpg" :v,
+        }
+    },
+    UserBio:{
         type:String,
         trim:true,
-        default: "https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" ,
-        set:(v)=> v===""?"https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" :v,
-    },
-    Rooms:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Rooms'
-    }]
+        default: "Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️" ,
+        set:(v)=> v===""?"Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️" :v,
+    }
 
 })
 

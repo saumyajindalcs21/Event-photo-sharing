@@ -6,9 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="showImage" style="width: 100vw;  display: flex; justify-content: center; align-items: center;">
-        <img src="/uploads/<%= image.FileName %>" alt="img" style="width: 95vw;   border-radius: 0.5rem;" class="my-5">
+    <div class="showImage" style="width: 100vw;  display: flex; justify-content: center; align-items: center;" >
+        <img src="/uploads/<%= image.FileName %>" alt="img" style="width: 95vw;   border-radius: 0.5rem;" class="my-5" id="DownloadImage">
     </div> 
+
+    <button type="button" class=" btn btn-success" id="DownloadButton"><a href="/uploads/<%= image.FileName %>" download> DownLoad Image </a></button>
+
 </body>
 </html>
 

@@ -1,4 +1,6 @@
 const User=require("../Models/User");
+const Room = require('../Models/Rooms');
+const Image=require('../Models/Images');
 
 module.exports.RenderLoginForm = (req,res)=>{
     res.render("login");
@@ -37,3 +39,36 @@ module.exports.UserLogOut = (req,res)=>{
         res.redirect("/Rooms");
     })
 };
+
+module.exports.UserProfile = async(req,res)=>{
+    const Rooms= await Room.find({});
+    const Images= await Image.find({});
+    const Users = await User.find({});  
+    res.render("Users/UserProfile",{Rooms,Images});
+}
+
+module.exports.UserProfileEdit = async(req,res)=>{
+    res.render("Users/userProfileEdit");
+}
+
+module.exports.UpdateProfile = async(req,res)=>{
+    // let {FirstName,LastName,Email,UserBio}=req.body;
+    await User.findByIdAndUpdate(req.user._id,{...req.body.NewUser});
+    req.flash("success","Your Profile details Changed successfully!");
+    res.redirect("/UserProfile")
+}
+
+module.exports.ChangeProfilePic = async(req,res)=>{
+    let File=req.file;
+    let FileName=File.filename;
+    let FilePath=File.path;
+    const newuser={};
+    newuser.ProfilePic = {FileName,FilePath};
+    await User.findByIdAndUpdate(req.user._id,{...newuser});
+    req.flash("success","Your Profile Pic Changed successfully!");
+    res.redirect("/UserProfile");
+}
+
+module.exports.FutureUpdates = (req,res)=>{
+    res.render("FutureUpdates");
+}

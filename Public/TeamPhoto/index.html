@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Sharing</title>
+  <style>
+    .container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#shareButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="./om.jpg" alt="Example Image">
+    <button id="shareButton">Share Image</button>
+  </div>
+
+  <script>
+    document.getElementById("shareButton").addEventListener("click", function() {
+  // Get the URL of the image
+  var imageUrl = document.querySelector("img").src;
+
+  
+//   window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(imageUrl));
+//   window.open("https://twitter.com/intent/tweet?url=" + encodeURIComponent(imageUrl));
+//   window.open("https://www.linkedin.com/shareArticle?url=" + encodeURIComponent(imageUrl));
+  // Add more social media platforms as needed
+  var currentPageUrl = window.location.href; 
+
+  var whatsappMessage = "Check out this Event: " + currentPageUrl;
+  window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(whatsappMessage));
+
+ 
+});
+
+  </script>
+</body>
+</html>

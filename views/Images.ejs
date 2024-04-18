@@ -17,6 +17,7 @@
         <h3 class="fs-6"> <%= roomInfo.desc %> </h3>
       </div>
 
+  <div class="EventsButtons d-flex justify-content-between">
     <% if(currUser && currUser._id.equals(roomInfo.owner._id)){ %>
       <div class="EditandDelete d-flex">
         <a href="/Rooms/<%= roomInfo._id %>/Edit ">
@@ -27,11 +28,29 @@
             <button class="btn btn-danger mx-3 my-4">Delete</button>
         </form>
       </div>
-      <hr class="col-12">
+      
     <%}%>
+    
+        <div class="ShareEvent d-flex justify-center align-items-center">
+          <input type="text" id="textToCopy" style="" value="">
+          <button type="button" class="btn btn-secondary mx-3 my-4" id="CopyButton">Copy Link</button>
+          <button type="button" class="btn btn-outline-dark mx-3 my-4" id="shareButton">Share Event</button>
+        </div>
 
+        <div id="qrcode-container" style="visibility: hidden;">
+          <img src="" alt="" id="QrImage">
+        </div>
+
+          <div class="qrButton">
+            <button type="button" class="btn btn-outline-success mx-3 my-4" id="GenQr">Generate QR Code</button>
+            <button type="button" class=" btn btn-success" id="DownloadButton"><a href="" download id="Qr-a"> Download QR Code </a></button>
+          </div>
+      </div>
     </div>
 
+   
+
+    <hr class="col-12">
 
     
   <% if(currUser && currUser._id.equals(roomInfo.owner._id)){ %>
@@ -48,9 +67,9 @@
         </div>
 
     </form>
+    <hr class="mt-5 col-12">
   <%}%>
 
-<hr class="mt-5 col-12">
 
     <div class="Images">
         <h1 class="fs-3 mt-5">All Images</h1>
@@ -84,5 +103,7 @@
 
     </div>
   </div>
-    
+    <script src="/JS/GenerateQr.js"></script>
+    <script src="/JS/ShareEvent.js"></script>
+    <script src="/JS/CopyLink.js"></script>
 </body>

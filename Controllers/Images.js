@@ -11,7 +11,7 @@ module.exports.AddImage = async(req,res)=>{
         FileName:File.filename,
         FilePath:File.path
     });
-    roomInfo.Images.push(newImage);
+    roomInfo.Images.push(newImage); 
     await newImage.save();
     await roomInfo.save();
     req.flash("success","Image added successfully!");

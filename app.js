@@ -97,11 +97,11 @@ app.use("*",(req,res,next)=>{
     // next(new ExpressError(400,"page not found"));
 })
 
-app.use((err,req,res,next)=>{
-    let{statusCode=500,message="something went wrong"}=err;
-    // res.status(statusCode).send(message);
-    res.status(statusCode).render("Error",{err});
-})
+// app.use((err,req,res,next)=>{
+//     let{statusCode=500,message="something went wrong"}=err;
+//     // res.status(statusCode).send(message);
+//     res.status(statusCode).render("Error",{err});
+// })
 
 const PORT = 5000;
 app.listen(PORT,()=>{
