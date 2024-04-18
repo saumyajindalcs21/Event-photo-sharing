@@ -7,10 +7,18 @@ const ejsMate = require('ejs-mate');
 const ExpressError=require('./Utils/ExpressError');
 const session=require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local")
+
+//-------------Route required------------------
+
+const RoomsRouter=require('./routes/Event');
+const ImagesRouter=require('./routes/Images');
+const UsersRouter=require('./routes/User');
 
 //------------------DataBase Schema----------------
 
-const Info=require('./Models/Information');
+const User=require('./Models/User');
 const Room=require('./Models/Rooms');
 const Image=require('./Models/Images');
 
@@ -39,6 +47,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.engine('ejs',ejsMate);
 
+//-------------------Session,flash & Passport Authentication------------------
 
 const sessionOptions={
     secret:"mySuperSecretCode",
@@ -50,6 +59,23 @@ const sessionOptions={
     },
 };
 
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser= req.user;
+    next();
+})
+
 //---------------------Home Route--------------------
 
 app.get('/',(req,res)=>{
@@ -57,29 +83,11 @@ app.get('/',(req,res)=>{
 });
 
 
-app.use(session(sessionOptions));
-app.use(flash());
-
-app.use((req,res,next)=>{
-    res.locals.success = req.flash("success");
-    next();
-})
-
-//-------------Route required------------------
-
-const Rooms=require('./routes/Event');
-const Images=require('./routes/Images');
-
-
-
 //---------------------Routes--------------------
 
-app.get('/Login',(req,res)=>{
-    res.render('Login');
-});
-
-app.use("/Rooms",Rooms);
-app.use("/Rooms/:id",Images);
+app.use("/Rooms",RoomsRouter);
+app.use("/Rooms/:id",ImagesRouter);
+app.use("/",UsersRouter);
 
 
 //--------------------Error Handling---------------
@@ -89,11 +97,11 @@ app.use("*",(req,res,next)=>{
     // next(new ExpressError(400,"page not found"));
 })
 
-app.use((err,req,res,next)=>{
-    let{statusCode=500,message="something went wrong"}=err;
-    // res.status(statusCode).send(message);
-    res.status(statusCode).render("Error",{err});
-})
+// app.use((err,req,res,next)=>{
+//     let{statusCode=500,message="something went wrong"}=err;
+//     // res.status(statusCode).send(message);
+//     res.status(statusCode).render("Error",{err});
+// })
 
 const PORT = 5000;
 app.listen(PORT,()=>{

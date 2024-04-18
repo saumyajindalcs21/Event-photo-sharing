@@ -1,7 +1,7 @@
 <% layout("./layouts/boilerplate") %>
 
 <body>
-<div class="main col-8 mx-auto p-2">
+<div class="main col-8 mx-auto p-2 mb-5 mt-5">
     <h1 class="mb-6 mt-3 fs-1">Edit Room Details</h1>
 
     <form method="POST" action="/Rooms/<%= roomInfo._id %>?_method=PUT" novalidate class="needs-validation" >
@@ -11,7 +11,7 @@
         <div class="invalid-feedback">Please Enter Event Name</div>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3"> 
         <label for="Description" class="form-label">Description</label>
         <textarea class="form-control" name="room[desc]" placeholder="Enter Room description" required ><%=roomInfo.desc %></textarea>
         <div class="invalid-feedback">Please Enter Event Description</div>
@@ -23,7 +23,6 @@
         <div class="invalid-feedback">Please Enter Image URL</div>
         </div>
         
-
         <button class="btn btn-success edit-btn">SAVE</button>
     </form>
 </div>
