@@ -3,7 +3,7 @@ const router=express.Router({mergeParams: true});
 const User=require("../Models/User");
 const wrapAsync = require("../Utils/wrapAsync");
 const passport = require("passport");
-const { saveRedirectUrl,isLoggedIn } = require("../Middleware");
+const { saveRedirectUrl,isLoggedIn,validateUserSchema } = require("../Middleware");
 const multer  = require('multer');
 
 const UserController = require('../Controllers/User');
@@ -39,5 +39,7 @@ router.get("/UserProfile/Edit",isLoggedIn, UserController.UserProfileEdit);
 
 
 router.get("/FutureUpdates",UserController.FutureUpdates);
+
+router.get("/AllImages",UserController.AllImages);
 
 module.exports=router;

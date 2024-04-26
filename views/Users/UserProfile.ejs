@@ -45,13 +45,13 @@
           <div class="profile-username&edit mb-4">
             <h1 class="profile-user-name fs-3"><%= currUser.username %></h1>
             <button class="btn profile-edit-btn btn-outline-secondary"><a href="/UserProfile/Edit">Edit Profile</a></button>
-          </div>
+         </div>
 
           <div class="profile-stats mb-4">
             <ul>
-              <li><span class="profile-stat-count fs-3">15</span> Events</li>
-              <li><span class="profile-stat-count fs-3">09</span> Images</li>
-              <li><span class="profile-stat-count fs-3">04</span> Videos</li>
+              <li><span class="profile-stat-count fs-3" id="ShowEventCount"> </span> Events</li>
+              <li><span class="profile-stat-count fs-3" id="ShowImageCount"> </span> Images</li>
+              <li><span class="profile-stat-count fs-3" id="ShowVideoCount"> </span> Videos</li>
             </ul>
           </div>
 
@@ -73,7 +73,7 @@
 <div id="div1">
   <div class="container" class="Profile_Events" id="Profile_Events div1">
       <div class="gallery">
-
+        <% var EventCount = 0; %>
         <div class="gallery-item" tabindex="0">
           <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
             <% for(let Room of Rooms){ %>
@@ -81,7 +81,7 @@
               <a href="/Rooms/<%= Room._id %>">
       
                   <div class="card mt-3 col mx-1 " >
-                      <img src="<%= Room.MainImage %>" class="card-img-top" alt="..." style="height: 20rem !important;" >
+                      <img src="/uploads/EventProfilePic/<%= Room.MainImage %>" class="card-img-top" alt="..." style="height: 20rem !important;" >
                       <div class="card-body mx-1">
                           <h5 class="card-title fs-4 " style="overflow: hidden; height: 2rem !important;"><%= Room.RoomName %></h5>
                           <div class="description" style="overflow: hidden; height: 2.5rem !important;">
@@ -90,6 +90,7 @@
                       </div>
                     </div>
               </a>
+              <% EventCount++; %>
               <% } %>
             <% } %>
           </div>
@@ -105,13 +106,14 @@
       <div class="gallery">
 
       <div class="gallery-item" tabindex="0">
-        <div class="showImage mt-6 row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ms-5 ps-2">
+        <div class="showImage mt-6 row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+          <% var ImageCount = 0; %>
           <% for(let Room of Rooms){ %>
             <% if(currUser && currUser._id.equals(Room.owner._id)){ %>
               <% for(let image of Room.Images){%>
 
-              <div class="card col mx-4 mt-3" style="width: 18rem;">
-                <img src="/uploads/<%= image.FileName %>" class="card-img-top mt-2" alt="..." style="height: 15rem !important;">
+              <div class="card col mx-2 mt-3" style="width: 18rem;">
+                <img src="/uploads/Images/<%= image.FileName %>" class="card-img-top mt-2" alt="..." style="height: 15rem !important;">
                 <div class="card-body">
                   <div style="overflow: hidden; height: 2.5rem !important;">
                     <h5 class="card-title mb-3"><%= image.FileName %></h5>
@@ -126,10 +128,11 @@
                     <button class="btn btn-danger p-3" style="background-color: rgb(170, 45, 45);">Delete</button>
                   </form>
                 <%}%>
+
                 </div>
                 </div>
               </div>
-
+              <% ImageCount++; %>
             <%}%>
           <%}%>
           <%}%>
@@ -145,60 +148,36 @@
   <div id="div3" class="Hidden">
   <div class="container Profile_Videos" id="Profile_Videos div3">
       <div class="gallery">
+        <% var VideoCount = 0; %>
 
           <div class="gallery-item" tabindex="0">
+            <div class="showImage mt-6 row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ms-5 ps-2">
+            <a href="/FutureUpdates">
             <div class="card mt-3 col mx-1 w-33" >
-              <img src="/uploads/1712856148261-animals-dog-puppies-wallpaper-preview.jpg" class="card-img-top" alt="..." style="height: 20rem !important;" >
+              <video src="/TeamPhoto/Worker.mp4" class="card-img-top" preload="auto" autoplay loop muted alt="..." style="height: 20rem !important;" > </video>
               <div class="card-body mx-1">
-                  <h5 class="card-title fs-4 " style="overflow: hidden; height: 2rem !important;">Event Name</h5>
+                  <h5 class="card-title fs-4 " style="overflow: hidden; height: 2rem !important;">UH OH!</h5>
                   <div class="description" style="overflow: hidden; height: 2.5rem !important;">
-                      <p class="card-text " style="font-size: small;">Welcome to first profile event</p>
+                      <p class="card-text " style="font-size: small;">The Features you are looking for does not exist. Our developers try hard to build it as soon as possible.</p>
                   </div>
               </div>
             </div>
-          </div>
-
-          <div class="gallery-item" tabindex="0">
-            <div class="card mt-3 col mx-1 w-33" >
-              <img src="/uploads/1712856148261-animals-dog-puppies-wallpaper-preview.jpg" class="card-img-top" alt="..." style="height: 20rem !important;" >
-              <div class="card-body mx-1">
-                  <h5 class="card-title fs-4 " style="overflow: hidden; height: 2rem !important;">Event Name</h5>
-                  <div class="description" style="overflow: hidden; height: 2.5rem !important;">
-                      <p class="card-text " style="font-size: small;">Welcome to first profile event</p>
-                  </div>
-              </div>
+          </a>
+            <% VideoCount++; %>
             </div>
-          </div>
-
-          <div class="gallery-item" tabindex="0">
-            <div class="card mt-3 col mx-1 w-33" >
-              <img src="/uploads/1712856148261-animals-dog-puppies-wallpaper-preview.jpg" class="card-img-top" alt="..." style="height: 20rem !important;" >
-              <div class="card-body mx-1">
-                  <h5 class="card-title fs-4 " style="overflow: hidden; height: 2rem !important;">Video Name</h5>
-                  <div class="description" style="overflow: hidden; height: 2.5rem !important;">
-                      <p class="card-text " style="font-size: small;">Welcome to first profile video</p>
-                  </div>
-              </div>
-            </div>
-          </div>
+          </div>   
       </div>
     </div>
   </div>
 </section>
 
-<script>
-document.querySelectorAll('input[name="div"]').forEach(function(radio) {
-  radio.addEventListener('change', function() {
-      var selectedDivId = this.value;
-      // Hide all divs
-      document.querySelectorAll('div[id^="div"]').forEach(function(div) {
-          div.classList.add('Hidden');
-      });
-      // Show selected div
-      document.getElementById(selectedDivId).classList.remove('Hidden');
-  });
-});
-</script>
+<div class="hideDetails" style="visibility: hidden;">
+    <h1 id="EventCount"><%= EventCount %></h1>
+    <h1 id="ImageCount"><%= ImageCount %></h1>
+    <h1 id="VideoCount"><%= VideoCount %></h1>
+</div>
 
+
+<script src="/JS/UserProfile.js"></script>
 
 </body>

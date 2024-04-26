@@ -5,7 +5,7 @@
   <div class="main col-10 mx-auto mb-5">
 
     <div class="MainImage">
-      <img class="w-100" src=" <%= roomInfo.MainImage %> " alt="MainImage" style="height: 35rem; border-radius: 1rem; object-fit: fill;">
+      <img class="w-100" src="/uploads/EventProfilePic/<%= roomInfo.MainImage %> " alt="MainImage" style="height: 35rem; border-radius: 1rem; object-fit: fill;">
     </div>
 
     <div>
@@ -32,7 +32,7 @@
     <%}%>
     
         <div class="ShareEvent d-flex justify-center align-items-center">
-          <input type="text" id="textToCopy" style="" value="">
+          <input type="text" id="textToCopy"  value="">
           <button type="button" class="btn btn-secondary mx-3 my-4" id="CopyButton">Copy Link</button>
           <button type="button" class="btn btn-outline-dark mx-3 my-4" id="shareButton">Share Event</button>
         </div>
@@ -73,12 +73,12 @@
 
     <div class="Images">
         <h1 class="fs-3 mt-5">All Images</h1>
-        <div class="showImage mt-6 row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <div class="showImage mt-6 row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mx-3">
 
         <% for(let image of roomInfo.Images){%>
 
             <div class="card col mx-2 mt-3" style="width: 18rem;">
-                <img src="/uploads/<%= image.FileName %>" class="card-img-top mt-2" alt="..." style="height: 15rem !important;">
+                <img src="/uploads/Images/<%= image.FileName %>" class="card-img-top mt-2" alt="..." style="height: 15rem !important;">
                 <div class="card-body">
                   <div style="overflow: hidden; height: 2.5rem !important;">
                     <h5 class="card-title mb-3"><%= image.FileName %></h5>

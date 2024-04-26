@@ -4,7 +4,7 @@
 <div class="main col-8 mx-auto p-2 mb-5 mt-5">
     <h1 class="mb-6 mt-3 fs-1">Add a New Event</h1>
 
-    <form method="POST" action="/Rooms" novalidate class="needs-validation">
+    <form method="POST" action="/Rooms" novalidate class="needs-validation" enctype="multipart/form-data"> 
 
         <div class="mb-3">
             <label for="RoomName" class="form-label">EventName</label>
@@ -19,8 +19,8 @@
         </div>
         
         <div class="mb-3">
-            <label for="Image" class="form-label">Image Link</label>
-            <input class="form-control" type="text" name="room[MainImage]" placeholder="Enter Room background Image" required>
+            <label for="Image" class="form-label">Upload Image</label>
+            <input class="form-control" type="file" name="room[MainImage]" required>
             <div class="invalid-feedback">Please choose image</div>
         </div>
 

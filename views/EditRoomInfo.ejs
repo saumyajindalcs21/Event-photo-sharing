@@ -1,13 +1,12 @@
 <% layout("./layouts/boilerplate") %>
 
-<body>
 <div class="main col-8 mx-auto p-2 mb-5 mt-5">
-    <h1 class="mb-6 mt-3 fs-1">Edit Room Details</h1>
+    <h1 class="mb-6 mt-3 fs-1">Edit Event Details</h1>
 
-    <form method="POST" action="/Rooms/<%= roomInfo._id %>?_method=PUT" novalidate class="needs-validation" >
+    <form method="POST" action="/Rooms/<%= roomInfo._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
-        <label for="RoomName" class="form-label">RoomName</label>
-        <input class="form-control" type="text" name="room[RoomName]" placeholder="Enter Room name " value="<%=roomInfo.RoomName %>" required >
+        <label for="RoomName" class="form-label">Event Name</label>
+        <input class="form-control" type="text" name="room[RoomName]" placeholder="Enter Event name " value="<%=roomInfo.RoomName %>" required >
         <div class="invalid-feedback">Please Enter Event Name</div>
         </div>
 
@@ -18,13 +17,12 @@
         </div>
 
         <div class="mb-3">
-        <label for="Image" class="form-label">Image Link</label>
-        <input class="form-control" type="text" name="room[MainImage]" placeholder="Enter Room background Image " value="<%=roomInfo.MainImage %>" required>
-        <div class="invalid-feedback">Please Enter Image URL</div>
+        <label for="Image" class="form-label">Upload Image</label>
+        <input class="form-control" type="file" name="room[MainImage]" >
+        <div class="invalid-feedback">Please Choose Image First</div>
         </div>
         
         <button class="btn btn-success edit-btn">SAVE</button>
     </form>
 </div>
 
-</body>
