@@ -1,0 +1,18 @@
+<% layout("./layouts/boilerplate") %>
+
+<div class="mainDiv mb-5 col-10 mx-auto">
+    <div class="showImage mt-6 row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
+        
+        <% for(let Room of Rooms){ %>
+            <% for(let image of Images){%>
+              <a href="/Rooms/<%= Room._id %>/showImage/<%= image._id %>">
+                <div class="card mt-3" style="width: 19rem;">
+                    <img src="/uploads/Images/<%= image.FileName %>" class="card-img-top " alt="..." style="height: 15rem !important;">
+                  </div>
+                </a>
+          <%}%>
+          <%break%>
+        <%}%>
+        
+      </div>
+</div>

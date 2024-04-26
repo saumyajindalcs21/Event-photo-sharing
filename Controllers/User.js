@@ -1,6 +1,7 @@
 const User=require("../Models/User");
 const Room = require('../Models/Rooms');
 const Image=require('../Models/Images');
+const {validateUserSchema}= require('../Middleware');
 
 module.exports.RenderLoginForm = (req,res)=>{
     res.render("login");
@@ -10,6 +11,7 @@ module.exports.UserSignUp = async(req,res)=>{
     try{
         let {FirstName,LastName,username,Email,password}=req.body;
         const newUser=new User({FirstName,LastName,username,Email});
+        validateUserSchema;
         const registerUser= await User.register(newUser,password);
         req.login(registerUser,(err)=>{
             if(err){
@@ -42,8 +44,7 @@ module.exports.UserLogOut = (req,res)=>{
 
 module.exports.UserProfile = async(req,res)=>{
     const Rooms= await Room.find({});
-    const Images= await Image.find({});
-    const Users = await User.find({});  
+    const Images= await Image.find({}); 
     res.render("Users/UserProfile",{Rooms,Images});
 }
 
@@ -71,4 +72,10 @@ module.exports.ChangeProfilePic = async(req,res)=>{
 
 module.exports.FutureUpdates = (req,res)=>{
     res.render("FutureUpdates");
+}
+
+module.exports.AllImages = async(req,res)=>{
+    const Rooms= await Room.find({});
+    const Images= await Image.find({});
+    res.render("AllImages",{Rooms,Images});
 }

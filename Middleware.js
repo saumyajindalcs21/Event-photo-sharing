@@ -1,6 +1,6 @@
 const Room = require("./Models/Rooms");
 const ExpressError=require('./Utils/ExpressError');
-const {RoomSchema, ImageSchema}=require('./ValidateSchema');
+const {RoomSchema, ImageSchema , UserSchema}=require('./ValidateSchema');
 
 module.exports.isLoggedIn=(req,res,next)=>{
     if(!req.isAuthenticated()){
@@ -39,6 +39,16 @@ module.exports.validateRoomSchema=(req,res,next)=>{
 }
 
 module.exports.validateImageSchema=(req,res,next)=>{
+    let { error }=ImageSchema.validate(req.body);
+    if(error){
+        let errMsg=error.details.map((el)=>el.message).join(",");
+        throw new ExpressError(400,errMsg);
+    }else{
+        next();
+    }
+}
+
+module.exports.validateUserSchema=(req,res,next)=>{
     let { error }=ImageSchema.validate(req.body);
     if(error){
         let errMsg=error.details.map((el)=>el.message).join(",");
